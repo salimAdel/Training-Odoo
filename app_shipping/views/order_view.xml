@@ -1,0 +1,92 @@
+<odoo>
+    <record id="order_view_tree" model="ir.ui.view">
+        <field name="name">Order Tree</field>
+        <field name="model">order</field>
+        <field name="arch" type="xml">
+            <tree  >
+                <field name="name"/>
+                <field name="store_id"/>
+                <field name="sender_name"/>
+                <field name="recipient_name"/>
+                <field name="tracking_number"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <field name="status" optional="1"/>
+                <field name="city" optional="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id ="order_view_form" model="ir.ui.view">
+        <field name="name">Order Form</field>
+        <field name="model">order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <field name="status" widget="statusbar"/>
+                        <button name="action_mark_as_draft" string="Set to Draft" type="object" class="oe_highlight" invisible="status == 'draft'"/>
+                        <button name="action_mark_as_shipped" string="Set to Shipped" type="object" class="oe_highlight" invisible="status == 'shipped'"/>
+                        <button name="action_mark_as_delivered" string="Set to Delivered" type="object" class="oe_highlight" invisible="status == 'delivered'"/>
+                        <button name="action_mark_as_cancel" string="Cancel" type="object" class="oe_highlight" invisible="status == 'cancelled'"/>
+                    </header>
+                    <div class="oe-title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group col="2">
+                        <group string="Order Information">
+                            <field name="sender_name"/>
+                            <field name="recipient_name"/>
+                            <field name="tracking_number"/>
+                            <!-- <field name="status"/> -->
+                            <field name="quantity"/>
+                            <field name="store_id"/>
+                        </group>
+                        <group string="Address Information">
+                            <field name="address"/>
+                            <field name="city"/>
+                            <field name="state"/>
+                            <field name="zip_code"/>
+                            <field name="country"/>
+                        </group>
+                    </group>
+                    <group col="1">
+                        <group string="Tags">
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="order_view_search" model="ir.ui.view">
+        <field name="name">Order Search</field>
+        <field name="model">order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="tracking_number"/>
+                <field name="recipient_name"/>
+                <field name="name"/>
+                <field name="sender_name"/>
+                <filter name="is_shipped" string="Shipped"
+                    domain="[('status','=','shipped')]"/>
+                <filter name="is_delivered" string="Delivered"
+                    domain="[('status','=','delivered')]"/>
+
+                <filter name="status" string="Status"
+                    context="{'group_by':'status'}"/>
+            </search>
+        </field>
+    </record>
+    <record id="order_action" model="ir.actions.act_window">
+        <field name="name">Order action</field>
+        <field name="res_model">order</field>
+    </record>
+    <menuitem
+        id="order_menu"
+        name="Orders"
+        parent="app_shipping_order_menu"
+        action="order_action"
+    />
+</odoo>

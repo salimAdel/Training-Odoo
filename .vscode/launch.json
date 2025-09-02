@@ -1,0 +1,19 @@
+{
+    "version": "17.0.0",
+    "configurations": [
+        {
+            "name": "odoo17",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/salim/odoo/odoo17/odoo-bin",
+            "console": "internalConsole",
+            // "console": "integratedTerminal",
+
+            "args": [
+                "--config=/home/salim/odoo/configration/Training-Odoo.conf",
+                // "-u", "sales_contract_and_recurring_invoices"
+
+        ]
+        }
+    ]
+}

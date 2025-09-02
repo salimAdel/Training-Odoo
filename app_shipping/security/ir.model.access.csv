@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_order,access_order,model_order,,1,1,1,1
+access_store_done,access_store_done,model_store_done,,1,1,1,1
+access_order_tag,access_order_tag,model_order_tag,,1,1,1,1

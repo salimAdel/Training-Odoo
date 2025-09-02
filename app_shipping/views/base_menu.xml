@@ -1,0 +1,16 @@
+<odoo>
+    <menuitem 
+        id="app_shipping_menu" 
+        name="Shipping" 
+    />
+    <menuitem
+        id="app_shipping_order_menu"
+        name="Orders"
+        parent="app_shipping_menu"
+    />
+    <menuitem
+        id="app_shipping_Configuration_menu"
+        name="Configuration"
+        parent="app_shipping_menu"
+    />
+</odoo>

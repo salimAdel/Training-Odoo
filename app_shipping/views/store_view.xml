@@ -1,0 +1,47 @@
+<odoo>
+    <record id="store_view_tree" model="ir.ui.view">
+        <field name="name">Store Tree</field>
+        <field name="model">store_done</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="location"/>
+                <field name="order_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="store_view_form" model="ir.ui.view">
+        <field name="name">Store Form</field>
+        <field name="model">store_done</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe-title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group col="2">
+                        <group string="Store Information">
+                            <field name="location"/>
+                        </group>
+                        <group>
+                            <field name="order_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="store_action" model="ir.actions.act_window">
+        <field name="name">Store action</field>
+        <field name="res_model">store_done</field>
+    </record>
+    <menuitem
+        id="app_shipping_store_menu"
+        name="Stores"
+        parent="app_shipping_Configuration_menu"
+        action="store_action"
+    />
+</odoo>
