@@ -30,6 +30,20 @@
                             <field name="order_ids" widget="many2many_tags"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Orders">
+                            <field name="order_ids">
+                                <!-- <tree>
+                                    <field name="name"/>
+                                    <field name="recipient_name"/>
+                                    <field name="tracking_number"/>
+                                    <field name="status"/>
+                                    <field name="address"/>
+                                </tree> -->
+                            </field>
+                        </page>
+
+                    </notebook>
                 </sheet>
             </form>
         </field>

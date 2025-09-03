@@ -2,6 +2,8 @@ from odoo import models , fields , api
 
 class order (models.Model):
     _name = 'order'
+    _inherit = ['mail.thread','mail.activity.mixin']
+
 
 
     name = fields.Text(required=True)
@@ -13,7 +15,7 @@ class order (models.Model):
         ('shipped', 'Shipped'),
         ('delivered', 'Delivered'),
         ('cancelled', 'Cancelled'),
-    ], default='draft' , required=True)
+    ], default='draft' , required=True , tracking=1)
     address = fields.Text(required=True)
     city = fields.Text()
     state = fields.Text()
